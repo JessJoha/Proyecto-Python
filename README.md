@@ -9,31 +9,47 @@ This is a simple Python project that prints "Hello World" to the console.
 - Docker (to run the project in a containerized environment)
 - Visual Studio Code (optional, for better Python development experience)
 
-## Installation
 
-1. Clone the repository:
+## Here’s the Dockerfile used and explained :
+
+| **Step**                       | **Description**                                                                                             |
+|---------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `FROM python:3.11`              | Pull the official Python 3.11 image from Docker Hub.                                                         |
+| `WORKDIR /app`                  | Set the working directory inside the container to `/app`.                                                   |
+| `COPY ProyectoPython.py /app/ProyectoPython.py` | Copy the Python script (`ProyectoPython.py`) into the container's `/app` directory.        |
+| `CMD ["python", "ProyectoPython.py"]` | Run the Python script when the container starts.                                                            |
+
+
+## Building the Docker Image 
+If you prefer to build the Docker image, run this command.
+
+1. **Build the Docker image:**
+   
+```bash
+docker build -t imgpython .
+ ```
+
+## Push the image to Docker Hub
+To push the image to your own Docker Hub account, follow these steps.
+
+1. **Tag the image:**
 
     ```bash
-    git clone https://github.com/JessJoha/ProyectoPython.git
-    ```
-
-2. Navigate to the project directory:
-
+    docker tag imgpython jessjoha/imgpython:latest
+    ``` 
+2. **Push the image to Docker Hub:**
+   
     ```bash
-    cd ProyectoPython
-    ```
+    docker push jessjoha/imgpython:latest
+    ``` 
 
-3. Ensure Python is installed by checking the version with the following command:
-
-    ```bash
-    python --version
-    ```
-
-    If you don't have Python installed, [download it here](https://www.python.org/downloads/).
-
-## Running the Project
-
-To run the project, simply use the following command in your terminal:
+### Pull the image from Docker Hub:
 
 ```bash
-python ProyectoPython.py
+docker pull jessjoha/imgpython
+```
+
+## Link to the Docker Hub image:
+
+https://hub.docker.com/r/jessjoha/imgpython
+
